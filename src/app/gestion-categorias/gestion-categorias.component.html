@@ -1,0 +1,19 @@
+<h2 style="text-align: center;">Formulario Categoria</h2>
+
+<form style="width: 20%;margin: 0 auto;" [formGroup]="categoria_formulario" (ngSubmit)="categoriaSubmit()">
+    <div class="form-group">
+      <label for="exampleInputPassword1">ID Categoria</label>
+      <input type="text" class="form-control" formControlName="idCategoria" placeholder="">
+      <div style="color:red" *ngIf="categoria_formulario.get('idCategoria')?.invalid && !initial">
+        rellene el id
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Descripcion</label>
+      <input type="password" class="form-control" formControlName="descripcion" >
+      <div style="color:red" *ngIf="categoria_formulario.get('descripcion')?.invalid && !initial">
+        rellene la descripcion
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="!categoria_formulario.valid">ADD</button>
+  </form>

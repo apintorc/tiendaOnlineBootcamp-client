@@ -1,0 +1,62 @@
+<h1>Productos de {{descripcion}}</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID PRODUCTO</th>
+        <th scope="col">ID CATEGORIA</th>
+        <th scope="col">DESCRIPCIÓN</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">STOCK</th>
+        <th scope="col">CARRITO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos; let i = index">
+        <td>{{producto.idProducto}}</td>
+        <td>{{producto.idCategoria}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.stock}}</td>
+        <td><button class="btn btn-secondary" (click)="add(producto)">Añadir</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button class="btn btn-primary" (click)="goBack()">Atrás</button>
+  <button class="btn btn-primary" (click)="verOcultarCarrito()">Ver/Ocultar</button>
+  <div style="width: 50%; margin-left: 25%;"  *ngIf="verCarrito; ">
+<h3>CARRITO: {{getTotalNumberCarrito()}} productos</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID PRODUCTO</th>
+        <th scope="col">DESCRIPCIÓN</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">CANTIDAD</th>
+        <th scope="col">ACCIÓN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carrito; let i = index">
+        <td>{{(i+1)}}</td>
+        <td>{{item.idProducto}}</td>
+        <td>{{item.descripcion}}</td>
+        <td>{{item.precio}}</td>
+        <td>
+          <button class="btn btn-secondary" (click)="decrementItem(item)">-</button>
+          {{item.cantidad}}
+          <button class="btn btn-secondary" (click)="incrementItem(item)">+</button>
+        </td>
+        <td><button class="btn btn-danger" (click)="delete(i)">Eliminar</button></td>
+      </tr>
+    </tbody>
+    
+
+  </table>
+  <h3>Total de la Compra: {{ getTotalPrice() }} €</h3>
+  <button class="btn btn-success" (click)="comprar()">Comprar</button>
+  <button class="btn btn-danger" (click)="eliminarCarrito()">Eliminar carrito</button>
+</div>
+

@@ -1,0 +1,15 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">idCategoria</th>
+        <th scope="col">descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categoria of categorias; let i = index">
+  
+        <td>{{categoria.idCategoria}}</td>
+        <td (click)="onSelect(categoria)">{{categoria.descripcion}}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,18 @@
+<h1 style="text-align: center;">LOGIN</h1>
+<form style="width: 20%;margin: 0 auto;" [formGroup]="login_formulario" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="exampleInputPassword1">Usuario</label>
+    <input type="text" class="form-control" formControlName="user" [disabled]="editMode">
+    <div style="color:red" *ngIf="login_formulario.get('user')?.invalid && !initial">
+      Usuario inválido. Debe tener 2 números y 1 letra.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="text" class="form-control" formControlName="password">
+    <div style="color:red" *ngIf="login_formulario.get('password')?.invalid && !initial">
+      Password inválido. Debe tener máximo 20 letras.
+    </div>
+  </div>
+  <button [disabled]="!login_formulario.valid"  type="submit" class="btn btn-primary">Login</button>
+</form>
